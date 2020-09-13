@@ -1,25 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SideMenu from './Components/SidebarMenu/SideMenu';
+import { makeStyles, CssBaseline, createMuiTheme, ThemeProvider } from '@material-ui/core';
+import Header from './Components/Header';
+import Form from './Components/Form/Form';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#3f51b5',
+      light: '#7986cb'
+    },
+    secondary: {
+      main: '#f50057',
+      light: '#ff4081'
+    },
+    background: {
+      default: '#E7EAED'
+    }
+  }
+})
+
+const useStyles = makeStyles({
+  appMain: {
+    paddingLeft: '300px',
+    width: '100%'
+  }
+})
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ThemeProvider theme={theme}>
+    <SideMenu />
+    <div className={classes.appMain}>
+      <Header />
+      <Form />
     </div>
+    <CssBaseline />
+    </ThemeProvider>
   );
 }
 
